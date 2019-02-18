@@ -1,0 +1,11 @@
+.card {
+    border: 1px solid #a2c6ea!important;
+}
+.card-header {
+    background-color:white;
+    border-bottom:1px solid #a2c6ea!important;
+}
+
+.list-group-item{
+    border:1px solid red!important;
+}

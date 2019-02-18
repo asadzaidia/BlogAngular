@@ -1,0 +1,64 @@
+<section class="mt-5">
+<div class="container">
+  <div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        {{post?.title}}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{post?.content}}</h5>
+       
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-6">
+        <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="comment"><h4>Comment&nbsp;&nbsp;<span><i class="fas fa-pen"></i></span></h4></label>
+              <textarea class="form-control" id="comment" 
+              aria-describedby="comment" placeholder="Your Comment" formControlName="comment"></textarea>
+              <small id="comment" class="form-text text-muted">Write Your Comment on this Post!</small>
+            </div>
+            
+
+            <button type="submit" class="btn btn-outline-success" [disabled]="!commentForm.valid">Submit</button>
+
+            </form>
+    </div>
+
+    <div class="col-md-3">
+
+    </div>
+  </div>
+
+  <div class="row mt-5">
+      <div class="col-md-3">
+
+      </div>
+      <div class="col-md-6">
+
+          <ul class="list-group">
+              <li class="list-group-item" *ngFor="let c of comments">{{c.content}} <i class="fas fa-comments"></i>
+              <button style="margin-left: 90%;" class="btn btn-outline-danger"  (click)="deleteComment(c._id)"><i class="fas fa-trash-alt"></i></button>
+              </li>
+          </ul>
+      </div>
+
+      <div class="col-md-3">
+
+      </div>
+  </div>
+</div>
+</section>
+
+
+
+
+

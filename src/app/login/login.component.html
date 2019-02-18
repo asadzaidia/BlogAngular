@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-2">
+        <h1>Login</h1>
+        <hr>
+  
+        <form (submit)="login()" [formGroup]="LoginForm">
+          <div class="form-group">
+            <input type="email" class="form-control" (focus)="validate()" (keyup)="validate()" (blur)="validate()" formControlName="email" placeholder="Your Email*">
+          </div>
+          <div class="form-group">
+              <input type="password" class="form-control" (focus)="validate()" (keyup)="validate()" (blur)="validate()" formControlName="password" placeholder="Your Password*">
+            </div>
+           
+            <button type="submit" class="btn btn-success"
+             data-toggle="tooltip" data-placement="bottom"
+              title="{{errors}}" [disabled]="LoginForm.invalid">Login</button>
+            <span style="margin-left:40%;">Not a Registered Member? <a routerLink="">Register</a></span>
+        </form>
+        
+        <hr>
+      </div>
+    </div>
+    
+  </div>
