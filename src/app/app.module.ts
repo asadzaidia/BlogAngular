@@ -14,7 +14,8 @@ import { DetailsComponent } from './details/details.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from './signup/signup.component';
-import { LoginComponent } from './login/login.component';  
+import { LoginComponent } from './login/login.component';
+import { SpinnerComponent } from './spinner/spinner.component';  
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { LoginComponent } from './login/login.component';
     CreatepostComponent,
     DetailsComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

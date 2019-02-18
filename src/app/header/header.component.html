@@ -12,8 +12,8 @@
       <li class="nav-item active">
         <a class="nav-link" routerLink="/create">Create Post</a>
       </li>
-      <li class="nav-item">
-          <a class="nav-link" (click)="logout()">Logout</a>
+      <li class="nav-item" *ngIf="showLogoutButton">
+          <a class="nav-link"  (click)="logout()">Logout</a>
         </li>
      
     </ul>

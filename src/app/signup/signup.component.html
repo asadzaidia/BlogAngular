@@ -3,7 +3,6 @@
     <div class="col-md-6 offset-2">
       <h1>Sign Up</h1>
       <hr>
-
       <form (submit)="register()" [formGroup]="registerForm">
         <div class="form-group">
           <input type="email" class="form-control" formControlName="email" placeholder="Your Email*">
@@ -17,6 +16,7 @@
           <button type="submit" class="btn btn-success" [disabled]="registerForm.invalid">Sign Up</button>
           <span style="margin-left:50%;">Already a member? <a routerLink="/login">Login</a></span>
       </form>
+      <app-spinner *ngIf="showSpinner"></app-spinner>
       
       <hr>
     </div>

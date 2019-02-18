@@ -12,6 +12,7 @@ import { Post } from './post.model';
 })
 export class DetailsComponent implements OnInit {
 
+showSpinner:boolean=true;
 id:any;
 private deleteCommentUrl:string;
   constructor(private route:ActivatedRoute,private postservice:PostserviceService) { }
@@ -27,7 +28,7 @@ commentForm=new FormGroup({
 
 
   ngOnInit() {
-   
+  
 //getting id from param
     this.route.params.subscribe(params => {
       this.id = params['id'];
@@ -42,8 +43,10 @@ this.post=this.postservice.getAllPostByID(this.id)
     
     //finding comments from post id
     this.postservice.getCommentsFromPost(this.id).subscribe((response:any)=>{
+      this.showSpinner=false;
       this.comments=response.comments;
     });  
+    
   }
 
   onSubmit() {
@@ -53,6 +56,8 @@ this.post=this.postservice.getAllPostByID(this.id)
     this.postservice.postAcomment(this.id,this.commentForm.value).subscribe((response:any)=>{
       if(response.success){
         this.postservice.getCommentsFromPost(this.id).subscribe((response:any)=>{
+          
+          this.showSpinner=false;
           this.comments=response.comments;
         }); 
     }
@@ -66,6 +71,7 @@ this.post=this.postservice.getAllPostByID(this.id)
     this.postservice.deleteAcomment(id).subscribe((response:any)=>{
       if(response.success){
         //updated comments from post id
+
         this.postservice.getCommentsFromPost(this.id).subscribe((response:any)=>{
           this.comments=response.comments;
         }); 

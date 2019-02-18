@@ -16,6 +16,10 @@
              data-toggle="tooltip" data-placement="bottom"
               title="{{errors}}" [disabled]="LoginForm.invalid">Login</button>
             <span style="margin-left:40%;">Not a Registered Member? <a routerLink="">Register</a></span>
+
+            <div *ngIf="showSpinner">
+              <app-spinner></app-spinner>
+            </div>
         </form>
         
         <hr>

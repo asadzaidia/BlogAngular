@@ -14,6 +14,7 @@ import {Router} from '@angular/router';
 
 export class LoginComponent implements OnInit {
   errors:string="email is required\npassword is required";
+  showSpinner=false;
   LoginForm=new FormGroup({
     email:new FormControl('',[Validators.required,Validators.email]),
     password:new FormControl('',Validators.required)
@@ -44,12 +45,13 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-
+    this.showSpinner=true;
     const body={
       email:this.email.value,
       password:this.password.value,
     }
     this.http.post('authentication/login',body).subscribe((response:any)=>{
+      this.showSpinner=false;
       if(response.success){
         this.LoginForm.reset();
         localStorage.setItem('token',response.token);

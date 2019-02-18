@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  showSpinner=false;
 registerForm=new FormGroup({
   email:new FormControl('',[Validators.required,Validators.email]),
   password:new FormControl('',Validators.required),
@@ -25,6 +26,7 @@ registerForm=new FormGroup({
   }
 
   register(){
+    this.showSpinner=true;
     const body={
       email:this.email.value,
       password:this.password.value,
@@ -32,11 +34,13 @@ registerForm=new FormGroup({
     }
     this.http.post('authentication/signup',body).subscribe((response:any)=>{
       if(response.success){
+        this.showSpinner=false;
         this.registerForm.reset();
         this.router.navigate(['/login'])
         this.showSuccess(response.message);
       }
       else if(!response.success){
+        this.showSpinner=false;
         this.registerForm.reset();
         this.showFailures(response.message);
       }
